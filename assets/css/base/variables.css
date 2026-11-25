@@ -1,0 +1,123 @@
+/* Design tokens : couleurs, typo, espacements. Modifiez ici pour changer tout le site. */
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f4f5f7;
+  --color-text: #1b1d21;
+  --color-muted: #5f6672;
+  --color-primary: #00356b;
+  --color-primary-contrast: #ffffff;
+  --color-border: #dde1e7;
+  --color-error: #d6336c;
+
+  /* Helvetica partout : normal pour le texte, gras pour les titres et les accents */
+  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-heading: var(--font-body);
+  --font-accent: var(--font-body);
+
+  /* Méduses ASCII */
+  --jelly: #00356b;          /* Yale Blue */
+  --jelly-light: #9cc2ee;    /* reflets clairs des méduses */
+  --jelly-text: #00356b;     /* texte d'accent (éclairci en thème sombre) */
+  --jelly-glyph: rgb(150 150 175 / 0.85);
+  --jelly-grid: rgb(120 120 150 / 0.10);
+
+  /* Carpes koi (page Compétences) */
+  --koi-white: #f1ebe0;
+  --koi-orange: #e5602a;
+  --koi-black: #26262c;
+  --koi-edge: #9c8f7c;       /* bords du corps (assombrissement) */
+
+  /* Montagnes et oiseaux (page Contact) */
+  --mount-far: rgb(0 53 107 / 0.2);
+  --mount-mid: rgb(0 53 107 / 0.3);
+  --mount-near: rgb(0 53 107 / 0.44);
+  --mount-snow: rgb(111 159 219 / 0.9);
+  --bird: #3d4450;
+
+  /* Lierre et papillons en pixel art (page À propos) */
+  --ivy-outline: #2c5530;    /* contour des feuilles */
+  --ivy-dark: #3e7a3b;       /* ombre */
+  --ivy-mid: #5c9e45;
+  --ivy-light: #93cc63;      /* lumière et nervure */
+  --ivy-stem: #6b5537;       /* tige brune */
+  --fly-1: #00356b;
+  --fly-2: #d9a514;
+  --fly-3: #e5602a;
+  --fly-4: #6f9fdb;
+  --fly-body: #5f6672;
+
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: clamp(2.25rem, 6vw, 3.5rem);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+
+  --radius: 0.75rem;
+  --shadow: 0 2px 12px rgb(0 0 0 / 0.08);
+  --container: 72rem;
+  --header-h: 4rem;
+  --transition: 200ms ease;
+}
+
+/* Thème sombre : suit le système, sauf si l'utilisateur a forcé le clair */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #111318;
+    --color-surface: #1b1e25;
+    --color-text: #e8eaee;
+    --color-muted: #9aa1ad;
+    --color-primary: #6f9fdb;
+    --color-primary-contrast: #111318;
+    --color-border: #2c313b;
+    --jelly-text: #6f9fdb;
+    --koi-edge: #4a4652;
+    --ivy-outline: #1d3a22;
+    --ivy-dark: #2f6033;
+    --ivy-mid: #4a8d44;
+    --ivy-light: #7dbb5f;
+    --ivy-stem: #7a6444;
+    --mount-far: rgb(156 194 238 / 0.2);
+    --mount-mid: rgb(156 194 238 / 0.3);
+    --mount-near: rgb(156 194 238 / 0.44);
+    --mount-snow: rgb(232 234 238 / 0.8);
+    --bird: #b4bac4;
+    --fly-1: #9cc2ee;
+    --fly-2: #f2c94c;
+    --fly-3: #f1ebe0;
+    --fly-4: #e5602a;
+    --fly-body: #9aa1ad;
+  }
+}
+:root[data-theme="dark"] {
+  --color-bg: #111318;
+  --color-surface: #1b1e25;
+  --color-text: #e8eaee;
+  --color-muted: #9aa1ad;
+  --color-primary: #6f9fdb;
+  --color-primary-contrast: #111318;
+  --color-border: #2c313b;
+  --jelly-text: #6f9fdb;
+  --koi-edge: #4a4652;
+  --ivy-outline: #1d3a22;
+  --ivy-dark: #2f6033;
+  --ivy-mid: #4a8d44;
+  --ivy-light: #7dbb5f;
+  --ivy-stem: #7a6444;
+  --mount-far: rgb(156 194 238 / 0.2);
+  --mount-mid: rgb(156 194 238 / 0.3);
+  --mount-near: rgb(156 194 238 / 0.44);
+  --mount-snow: rgb(232 234 238 / 0.8);
+  --bird: #b4bac4;
+  --fly-1: #9cc2ee;
+  --fly-2: #f2c94c;
+  --fly-3: #f1ebe0;
+  --fly-4: #e5602a;
+  --fly-body: #9aa1ad;
+}

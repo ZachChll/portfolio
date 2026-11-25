@@ -1,0 +1,263 @@
+/* ==========================================================
+   Compétences : roue interactive
+   - État "center" : la roue est au milieu, on ne voit que les titres.
+   - État "side"   : la roue glisse à gauche (à moitié hors écran) et la
+     catégorie choisie s'affiche en grand au centre.
+   Sur mobile, la roue remonte en haut au lieu d'aller à gauche.
+   ========================================================== */
+
+/* Angle de rotation de la roue, animable (sinon les titres ne restent pas droits) */
+@property --rot {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+.skills-page {
+  --wheel: min(34rem, 86vw, calc(100svh - var(--header-h) - 9rem));
+  --wheel-radius: 0.3;   /* rayon du cercle des noms, en fraction de --wheel */
+  --wheel-speed: 900ms;
+  --ease-wheel: cubic-bezier(0.65, 0, 0.25, 1);
+}
+
+.skills-stage {
+  position: relative;
+  min-height: calc(100svh - var(--header-h));
+  overflow-x: clip;
+}
+
+/* ---------- En-tête ---------- */
+.skills-head {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 3;
+  padding-top: var(--space-5);
+  pointer-events: none;
+  transition: opacity 400ms ease, transform 600ms var(--ease-out-soft);
+}
+.skills-head .page-head__eyebrow {
+  color: var(--jelly-text);
+  font-family: var(--font-accent); font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.skills-head h1 { font-family: var(--font-accent); font-weight: 700; font-weight: 700; letter-spacing: -0.02em; }
+
+/* ---------- Rail : garde la roue à l'écran pendant qu'on fait défiler le détail ---------- */
+.wheel-rail { position: absolute; inset: 0; pointer-events: none; }
+.wheel-sticky {
+  position: sticky;
+  top: var(--header-h);
+  height: calc(100svh - var(--header-h));
+  container-type: inline-size;
+}
+
+/* ---------- La roue ---------- */
+.wheel {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--wheel);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  transition: translate var(--wheel-speed) var(--ease-wheel);
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.wheel__disc {
+  position: absolute;
+  inset: 0;
+  rotate: var(--rot);
+  transition: --rot var(--wheel-speed) var(--ease-wheel);
+}
+/* Fines lignes qui partent du centre, entre chaque titre (elles tournent avec la roue).
+   Elles s'estompent vers l'extérieur et se dessinent au chargement. */
+.wheel__spoke {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: calc(var(--wheel) * 0.46);
+  height: 1px;
+  transform-origin: left center;
+  transform: rotate(var(--a));
+  background: linear-gradient(90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--color-text) 28%, transparent) 10%,
+    color-mix(in srgb, var(--color-text) 14%, transparent) 60%,
+    transparent 100%);
+  pointer-events: none;
+  animation: spoke-draw 1100ms var(--ease-out-soft) backwards;
+  animation-delay: calc(200ms + var(--d) * 70ms);
+}
+@keyframes spoke-draw {
+  from { transform: rotate(var(--a)) scaleX(0); }
+}
+
+/* Titres : placés en cercle puis contre-tournés pour rester droits.
+   La roue elle-même n'est pas dessinée : seuls les noms sont visibles. */
+.wheel__slot {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 0; height: 0;
+  transform: rotate(var(--a)) translateX(calc(var(--wheel) * var(--wheel-radius))) rotate(calc(-1 * var(--a) - var(--rot)));
+}
+.wheel__label {
+  position: absolute;
+  left: 0; top: 0;
+  translate: -50% -50%;
+  width: max-content;
+  padding: 0.5em 0.25em;
+  background: none;
+  border: 0;
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(1rem, calc(var(--wheel) * 0.042), 1.45rem);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 300ms ease, opacity 500ms ease;
+}
+.wheel__label span { position: relative; display: inline-block; padding-bottom: 0.25rem; }
+
+/* Trait fin qui se dessine sous le nom au survol */
+.wheel__label span::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 450ms var(--ease-out-soft);
+}
+.wheel__label:hover,
+.wheel__label:focus-visible { color: var(--color-text); }
+.wheel__label:hover span::after,
+.wheel__label:focus-visible span::after { transform: scaleX(1); }
+
+.wheel__label[aria-pressed="true"] { color: var(--jelly-text); }
+.wheel__label[aria-pressed="true"] span::after { transform: scaleX(1); }
+
+.wheel__label:focus-visible { outline: 1px solid var(--jelly-text); outline-offset: 2px; border-radius: 2px; }
+
+/* Roue sur le côté : les autres noms s'estompent */
+.skills-stage[data-state="side"] .wheel__label:not([aria-pressed="true"]) { opacity: 0.5; }
+.skills-stage[data-state="side"] .wheel__label:hover { opacity: 1; }
+
+/* Indice sous la roue */
+.skills-hint {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-4);
+  translate: -50% 0;
+  font-family: var(--font-accent); font-weight: 700;
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+  white-space: nowrap;
+  transition: opacity 400ms ease;
+}
+
+/* ---------- État "side" : la roue part à gauche ---------- */
+.skills-stage[data-state="side"] .wheel { translate: calc(-50% - 50cqi) -50%; }
+.skills-stage[data-state="side"] .skills-hint { opacity: 0; }
+.skills-stage[data-state="side"] .skills-head { opacity: 0; transform: translateX(-2rem); }
+
+/* ---------- Détail de la catégorie ---------- */
+.skill-detail {
+  position: relative;
+  z-index: 2;
+  /* place laissée à la moitié visible de la roue */
+  margin-left: calc(var(--wheel) / 2 + clamp(2rem, 6vw, 6rem));
+  margin-right: clamp(1rem, 5vw, 4rem);
+  max-width: 44rem;
+  min-height: calc(100svh - var(--header-h));
+  padding-block: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.skill-detail[hidden] { display: none; }
+
+.skill-detail__index {
+  font-family: var(--font-accent); font-weight: 700;
+  font-size: var(--fs-sm);
+  color: var(--jelly-text);
+}
+.skill-detail__title {
+  font-family: var(--font-accent); font-weight: 700;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5.5vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-block: var(--space-2) var(--space-3);
+  transform-origin: left top;
+}
+.skill-detail__intro {
+  font-size: var(--fs-lg);
+  color: var(--color-muted);
+  max-width: 36rem;
+  margin-bottom: var(--space-5);
+}
+.skill-detail__list { display: grid; gap: var(--space-4); }
+.skill-detail__list li {
+  padding-left: var(--space-3);
+  border-left: 1px solid color-mix(in srgb, var(--jelly-text) 55%, transparent);
+}
+.skill-detail__list h3 {
+  font-family: var(--font-accent); font-weight: 700;
+  font-size: var(--fs-base);
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+}
+.skill-detail__list p { color: var(--color-muted); line-height: 1.65; }
+
+.skill-detail__back {
+  align-self: flex-start;
+  margin-top: var(--space-5);
+  background: none;
+  border: 0;
+  padding: 0;
+  font-family: var(--font-accent); font-weight: 700;
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+.skill-detail__back:hover { color: var(--jelly-text); }
+
+/* Apparition échelonnée du contenu */
+.skill-detail.is-entering > :not(.skill-detail__title),
+.skill-detail.is-entering .skill-detail__list li {
+  animation: skill-in 650ms var(--ease-out-soft) backwards;
+  animation-delay: calc(180ms + var(--d, 0) * 70ms);
+}
+.skill-detail.is-entering .skill-detail__list { animation: none; }
+@keyframes skill-in {
+  from { opacity: 0; transform: translateY(12px); }
+}
+
+/* ---------- Mobile : la roue remonte en haut ---------- */
+@media (max-width: 48rem) {
+  .skills-page { --wheel: min(26rem, 94vw); --wheel-radius: 0.36; }
+  .wheel__label { font-size: 0.95rem; white-space: normal; max-width: 7.5em; text-align: center; }
+  .wheel-sticky { position: relative; top: 0; }
+  .skills-stage[data-state="side"] .wheel { translate: -50% calc(-50% - (50svh - var(--header-h) / 2)); }
+  .skills-stage[data-state="side"] .skills-head { transform: translateY(-1rem); }
+
+  .skill-detail {
+    margin: 0;
+    padding: calc(var(--wheel) / 2 + var(--space-4)) var(--space-3) var(--space-5);
+    min-height: 0;
+    max-width: none;
+    justify-content: flex-start;
+  }
+}
+
+/* ---------- Animations réduites ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .skills-page { --wheel-speed: 0ms; }
+  .wheel__spoke { animation: none; }
+  .skill-detail.is-entering > *,
+  .skill-detail.is-entering .skill-detail__list li { animation: none; }
+}

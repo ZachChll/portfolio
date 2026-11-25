@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Zacharie CHAILLOU – CV" data-fr-content="E-portfolio de Zacharie CHAILLOU – CV">
+  <title data-fr="CV | Zacharie CHAILLOU">CV | Zacharie CHAILLOU</title>
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/boot.js"></script>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/pages/cv.css">
+  <script type="module" src="../assets/js/main.js"></script>
+</head>
+<body data-page="cv">
+  <a class="skip-link" href="#contenu" data-fr="Aller au contenu">Skip to content</a>
+
+  <!-- Fond animé : grille ASCII -->
+  <canvas class="jelly-canvas" data-ascii-bg aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="../index.html">Zacharie CHAILLOU</a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-principale" aria-label="Open menu" data-fr-aria-label="Ouvrir le menu">
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav id="nav-principale" class="site-nav" aria-label="Main navigation" data-fr-aria-label="Navigation principale">
+        <ul class="site-nav__list">
+          <li><a href="../index.html" data-fr="Accueil">Home</a></li>
+          <li><a href="../pages/a-propos.html" data-fr="À propos">About</a></li>
+          <li><a href="../pages/competences.html" data-fr="Compétences">Skills</a></li>
+          <li><a href="../pages/parcours.html" data-fr="Parcours">Experience</a></li>
+          <li><a href="../pages/projets.html" data-fr="Projets">Projects</a></li>
+          <li><a href="../pages/contact.html">Contact</a></li>
+          <li><a href="../pages/cv.html" aria-current="page">CV</a></li>
+        </ul>
+      </nav>
+
+      <button class="lang-toggle" type="button" aria-label="Passer le site en français" data-fr-aria-label="Switch the site to English" title="Français" data-fr-title="English"><span data-l="en">EN</span><span data-l="fr">FR</span></button>
+      <button class="theme-toggle" aria-label="Toggle theme" data-fr-aria-label="Changer de thème" title="Toggle theme" data-fr-title="Changer de thème">◐</button>
+    </div>
+  </header>
+
+  <main id="contenu" class="cv">
+
+    <div class="section">
+      <div class="container">
+        <header class="page-head">
+          <p class="page-head__eyebrow">~/cv</p>
+          <h1>CV</h1>
+          <p class="cv__lead" data-fr="Mon parcours, mes compétences et mes expériences, sur une page.">My background, skills and experience, on one page.</p>
+        </header>
+
+        <section class="panel cv__panel">
+          <div class="cv__bar">
+            <p class="cv__file"><span class="cv__prompt">$</span> open Zacharie_CHAILLOU_CV.pdf</p>
+            <div class="cv__actions">
+              <a class="cv__btn cv__btn--primary" href="../assets/docs/cv.pdf" download="Zacharie_CHAILLOU_CV.pdf" data-fr="[ télécharger ↓ ]">[ download ↓ ]</a>
+              <a class="cv__btn" href="../assets/docs/cv.pdf" target="_blank" rel="noopener" data-fr="[ ouvrir ↗ ]">[ open ↗ ]</a>
+            </div>
+          </div>
+          <object class="cv__viewer" data="../assets/docs/cv.pdf#navpanes=0&view=FitH" type="application/pdf" aria-label="Zacharie CHAILLOU’s CV (PDF)" data-fr-aria-label="CV de Zacharie CHAILLOU (PDF)">
+            <p data-fr="Votre navigateur ne peut pas afficher le PDF ici. <a href=&quot;../assets/docs/cv.pdf&quot; download=&quot;Zacharie_CHAILLOU_CV.pdf&quot;>Télécharger le CV</a>.">Your browser can’t display the PDF here. <a href="../assets/docs/cv.pdf" download="Zacharie_CHAILLOU_CV.pdf">Download the CV</a>.</p>
+          </object>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>&copy; <span data-year></span> Zacharie CHAILLOU</p>
+      <ul class="site-footer__links">
+        <li><a href="https://github.com/ZachChll" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="../pages/cv.html">CV</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,67 @@
+/* ==========================================================
+   CV : fond ASCII, aperçu du PDF et boutons de téléchargement
+   ========================================================== */
+
+.cv .page-head__eyebrow {
+  color: var(--jelly-text);
+  font-family: var(--font-accent); font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.cv .page-head h1 {
+  font-family: var(--font-accent); font-weight: 700;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.cv__lead {
+  margin-top: var(--space-2);
+  color: var(--color-muted);
+  font-size: var(--fs-lg);
+  max-width: 40rem;
+}
+
+.jelly-canvas ~ main.cv .panel { background: color-mix(in srgb, var(--color-surface) 93%, transparent); }
+
+.cv__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  font-family: var(--font-accent); font-weight: 700;
+}
+.cv__file { color: var(--color-muted); font-size: var(--fs-sm); overflow-wrap: anywhere; }
+.cv__prompt { color: var(--jelly-text); font-weight: 700; margin-right: 0.5rem; }
+
+.cv__actions { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.cv__btn {
+  font-family: var(--font-accent); font-weight: 700;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--jelly-text);
+  text-decoration: none;
+  border: 1px solid color-mix(in srgb, var(--jelly-text) 45%, transparent);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+.cv__btn:hover { border-color: var(--jelly-text); }
+.cv__btn--primary { border-color: var(--jelly-text); }
+.cv__btn--primary:hover { background: var(--jelly-text); color: var(--color-bg); }
+
+.cv__viewer {
+  display: block;
+  width: 100%;
+  height: min(85vh, 70rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+}
+.cv__viewer p { padding: var(--space-4); color: var(--color-muted); }
+.cv__viewer a { color: var(--jelly-text); }
+
+/* sur mobile, l'aperçu intégré est rarement géré : on garde surtout les boutons */
+@media (max-width: 40rem) {
+  .cv__viewer { height: 70vh; }
+}

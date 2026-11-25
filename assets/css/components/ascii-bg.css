@@ -1,0 +1,39 @@
+/* ==========================================================
+   Fond ASCII animé (canvas plein écran derrière le contenu)
+   - Accueil : grille + méduses  → <canvas data-jellyfish>
+   - Pages intérieures : grille seule → <canvas data-ascii-bg>
+   ========================================================== */
+.jelly-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  display: block;
+  pointer-events: none;
+}
+/* Les méduses de l'accueil sont cliquables */
+.jelly-canvas[data-jellyfish] { pointer-events: auto; }
+
+.jelly-canvas ~ main,
+.jelly-canvas ~ .site-footer { position: relative; z-index: 1; }
+
+/* Calque du lierre et des papillons (page À propos) : au-dessus des cases,
+   sous l'en-tête, et ne bloque jamais les clics */
+.ivy-layer,
+.sky-layer {
+  image-rendering: pixelated;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Panneaux légèrement translucides : on devine la grille derrière */
+.jelly-canvas ~ main .panel {
+  background: color-mix(in srgb, var(--color-surface) 80%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}

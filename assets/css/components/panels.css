@@ -1,0 +1,38 @@
+/* En-tête de page : petit sur-titre + grand titre */
+.page-head { margin-bottom: var(--space-5); }
+.page-head__eyebrow { color: var(--jelly-text); font-family: var(--font-accent); font-weight: 700; font-size: var(--fs-sm); }
+
+/* Panneau : bloc de contenu encadré */
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+.panel > h2 { font-size: var(--fs-lg); margin-bottom: var(--space-3); }
+.panel > .btn { margin-top: var(--space-4); }
+
+/* Mise en page en deux colonnes, empilées sur mobile */
+.two-columns { display: grid; gap: var(--space-4); align-items: start; }
+@media (min-width: 56rem) { .two-columns { grid-template-columns: 1fr 1.4fr; } }
+.stack { display: grid; gap: var(--space-4); }
+
+/* Fiche : paires libellé / valeur */
+.facts { display: grid; gap: var(--space-2); }
+.fact { display: grid; grid-template-columns: 7rem 1fr; gap: var(--space-3); padding-block: var(--space-2); border-bottom: 1px solid var(--color-border); }
+.fact:last-child { border-bottom: 0; }
+.fact dt { color: var(--color-muted); font-size: var(--fs-sm); }
+
+/* Lignes : titre + détail */
+.rows { display: grid; }
+.rows > li { display: grid; gap: var(--space-1); padding-block: var(--space-3); border-bottom: 1px solid var(--color-border); }
+.rows > li:first-child { padding-top: 0; }
+.rows > li:last-child { border-bottom: 0; padding-bottom: 0; }
+.rows > li > span { color: var(--color-muted); }
+@media (min-width: 36rem) {
+  .rows > li { grid-template-columns: 9rem 1fr; gap: var(--space-3); }
+}
+
+/* Liste à puces simple */
+.bullets { padding-left: 1.25rem; display: grid; gap: var(--space-1); }
+.tags { display: flex; flex-wrap: wrap; gap: var(--space-1); }

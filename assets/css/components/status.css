@@ -1,0 +1,6 @@
+/* Point vert fixe : "disponible" (accueil, parcours, contact) */
+.status-dot {
+  flex: none;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #2fb344;
+}

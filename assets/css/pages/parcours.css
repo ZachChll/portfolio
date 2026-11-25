@@ -1,0 +1,371 @@
+/* ==========================================================
+   Parcours : trois frises sur un même axe du temps
+   Lignes fines, titres seuls, détails qui se déplient au clic.
+   Les positions des titres sont calculées par assets/js/modules/parcours.js.
+   ========================================================== */
+
+.parcours-page {
+  --tl-name: 12rem;      /* colonne des noms de frise */
+  --tl-gap: 2rem;
+  --row-h: 2.4rem;       /* hauteur d'une rangée de titres */
+  --stem: 0.7rem;        /* petit trait entre un titre et la ligne */
+}
+
+/* ---------- En-tête ---------- */
+.parcours-head .page-head__eyebrow {
+  color: var(--jelly-text);
+  font-family: var(--font-accent); font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.parcours-head h1 { font-family: var(--font-accent); font-weight: 700; font-weight: 700; letter-spacing: -0.02em; }
+.parcours-head__lead { margin-top: var(--space-2); color: var(--color-muted); font-size: var(--fs-lg); max-width: 40rem; }
+
+/* Ligne "HEAD →" : la situation actuelle, lisible en un coup d'œil */
+.head-status {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-6);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--color-surface) 80%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-size: var(--fs-sm);
+}
+.head-status__ref { font-family: var(--font-accent); font-weight: 700; color: var(--jelly-text); }
+.head-status__link {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: var(--jelly-text);
+  text-underline-offset: 3px;
+}
+.head-status__link:hover { color: var(--jelly-text); }
+
+/* ---------- Grille commune : nom de frise | ligne du temps ---------- */
+.tl__axis,
+.tl-track {
+  display: grid;
+  grid-template-columns: var(--tl-name) 1fr;
+  column-gap: var(--tl-gap);
+}
+
+/* Axe : années + "aujourd'hui" */
+.tl__ruler { position: relative; height: 2.8rem; }
+.tl__year {
+  position: absolute;
+  left: var(--x);
+  top: 0;
+  translate: -50% 0;
+  font-family: var(--font-accent); font-weight: 700;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-text);
+}
+.tl__year:first-child { translate: 0 0; }
+.tl__today {
+  position: absolute;
+  left: var(--today);
+  top: 1.45rem;
+  translate: -50% 0;
+  font-family: var(--font-accent); font-weight: 700;
+  font-size: 0.72rem;
+  color: var(--jelly-text);
+  white-space: nowrap;
+}
+
+/* ---------- Une frise ---------- */
+.tl-track {
+  --above: 1;
+  --below: 0;
+  --line-y: calc(0.4rem + var(--above) * var(--row-h) + var(--stem));
+  padding-block: var(--space-4);
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+}
+.tl-track:last-child { border-bottom: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent); }
+
+.tl-track__name {
+  padding-top: calc(var(--line-y) - 0.75em);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  line-height: 1.4;
+}
+.tl-track__name span { color: var(--jelly-text); margin-right: 0.5rem; font-family: var(--font-accent); font-weight: 700; font-size: var(--fs-sm); font-weight: 400; }
+
+.tl-track__lane {
+  position: relative;
+  height: calc(var(--line-y) + var(--stem) + var(--below) * var(--row-h) + 0.4rem);
+}
+
+.tl-track__line {
+  position: absolute;
+  left: 0; right: 0;
+  top: var(--line-y);
+  height: 1px;
+  background: color-mix(in srgb, var(--color-text) 22%, transparent);
+}
+.tl-track__year {
+  position: absolute;
+  top: calc(var(--line-y) - 5px);
+  height: 11px;
+  left: var(--x);
+  width: 1px;
+  background: color-mix(in srgb, var(--color-text) 30%, transparent);
+}
+.tl-track__now {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: var(--today);
+  width: 0;
+  border-left: 1px dashed color-mix(in srgb, var(--jelly-text) 35%, transparent);
+}
+
+/* Repères : points (étapes courtes) et segments (étapes longues) */
+.tl-track__marks { position: absolute; inset: 0; pointer-events: none; }
+.tl-mark { position: absolute; top: var(--line-y); transition: color 300ms ease, background 300ms ease, scale 300ms ease; }
+
+.tl-mark--dot {
+  left: var(--x);
+  width: 9px; height: 9px;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 1.5px solid color-mix(in srgb, var(--color-text) 60%, transparent);
+}
+.tl-mark--dot.is-future { border-style: dashed; }
+.tl-mark--dot.is-hover { border-color: var(--color-text); scale: 1.25; }
+.tl-mark--dot.is-active { background: var(--jelly-text); border-color: var(--jelly-text); scale: 1.4; }
+
+.tl-mark--seg {
+  left: var(--x0);
+  width: calc(var(--x1) - var(--x0));
+  height: 3px;
+  translate: 0 -50%;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+/* petites barres verticales aux deux extrémités */
+.tl-mark--seg::before,
+.tl-mark--seg::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 1.5px; height: 11px;
+  translate: 0 -50%;
+  background: currentColor;
+}
+.tl-mark--seg::before { left: 0; }
+.tl-mark--seg::after { right: 0; }
+.tl-mark__solid,
+.tl-mark__future { position: absolute; top: 0; height: 100%; }
+.tl-mark__solid { background: currentColor; }
+.tl-mark__future { background: repeating-linear-gradient(90deg, currentColor 0 4px, transparent 4px 8px); }
+/* étape en cours : les pointillés s'effacent vers la droite, et pas de barre de fin */
+.tl-mark__future.is-ongoing {
+  -webkit-mask-image: linear-gradient(90deg, #000 30%, transparent);
+  mask-image: linear-gradient(90deg, #000 30%, transparent);
+}
+.tl-mark--seg:has(.is-ongoing)::after { display: none; }
+.tl-mark--seg.is-hover { color: var(--color-text); }
+.tl-mark--seg.is-active { color: var(--jelly-text); }
+
+/* Titres */
+.tl-track__items { margin: 0; padding: 0; list-style: none; }
+.tl-item {
+  position: absolute;
+  top: 0;
+  width: max-content;
+}
+.tl-item[data-side="a"] { top: calc(var(--line-y) - var(--stem) - (var(--level) + 1) * var(--row-h)); }
+.tl-item[data-side="b"] { top: calc(var(--line-y) + var(--stem) + var(--level) * var(--row-h)); }
+
+/* trait fin qui relie le titre à la ligne */
+.tl-item::after {
+  content: "";
+  position: absolute;
+  left: var(--stem-x, var(--stem));
+  width: 1px;
+  height: calc(var(--stem) + var(--level, 0) * var(--row-h));
+  background: color-mix(in srgb, var(--color-text) 25%, transparent);
+  transition: background 300ms ease;
+}
+.tl-item[data-side="a"]::after { top: 100%; }
+.tl-item[data-side="b"]::after { bottom: 100%; }
+.tl-item.is-active::after { background: var(--jelly-text); }
+
+.tl-item__btn {
+  display: flex;
+  align-items: center;
+  height: var(--row-h);
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.05rem;
+  white-space: nowrap;
+  cursor: pointer;
+  /* halo couleur de fond : les lignes verticales ne traversent pas le texte */
+  text-shadow: 0 0 3px var(--color-bg), 0 0 6px var(--color-bg), 0 0 10px var(--color-bg);
+  transition: color 300ms ease;
+}
+.tl-item__title { position: relative; padding-bottom: 0.25rem; }
+.tl-item__title::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 450ms var(--ease-out-soft);
+}
+.tl-item__btn:hover .tl-item__title::after,
+.tl-item__btn:focus-visible .tl-item__title::after,
+.tl-item.is-active .tl-item__title::after { transform: scaleX(1); }
+.tl-item.is-active .tl-item__btn { color: var(--jelly-text); }
+.tl-item__btn:focus-visible { outline: 1px solid var(--jelly-text); outline-offset: 3px; border-radius: 2px; }
+.tl-item__date { display: none; }
+
+/* ---------- Panneau de détails ---------- */
+.tl-panel {
+  grid-column: 2;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 550ms var(--ease-out-soft);
+}
+.tl-panel.is-open { grid-template-rows: 1fr; }
+.tl-panel__clip { min-height: 0; overflow: hidden; }
+
+.tl-panel__box {
+  position: relative;
+  margin: 0.75rem 0 0.5rem;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  max-width: 46rem;
+}
+/* petite flèche qui pointe vers l'étape choisie */
+.tl-panel__box::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: clamp(1rem, var(--x, 2rem), calc(100% - 1rem));
+  width: 11px; height: 11px;
+  translate: -50% 0;
+  rotate: 45deg;
+  background: inherit;
+  border-top: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+  transition: left 450ms var(--ease-out-soft);
+}
+.tl-panel__box:empty::before { display: none; }
+
+.tl-panel__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-family: var(--font-accent); font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+.tl-panel__meta span:first-child { color: var(--jelly-text); }
+.tl-panel__title {
+  margin: var(--space-2) 0 var(--space-3);
+  font-family: var(--font-accent); font-weight: 700;
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  line-height: 1.3;
+}
+.tl-panel__points { display: grid; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+.tl-panel__points li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+.tl-panel__points li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.8em;
+  width: 0.8rem; height: 1px;
+  background: color-mix(in srgb, var(--jelly-text) 70%, transparent);
+}
+.tl-panel__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: var(--space-4) 0 0; padding: 0; list-style: none; }
+.tl-panel__tags li {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-family: var(--font-accent); font-weight: 700;
+  font-size: 0.72rem;
+  color: var(--color-text);
+}
+
+/* apparition échelonnée du contenu */
+.tl-panel__box.is-entering > *,
+.tl-panel__box.is-entering .tl-panel__points li {
+  animation: tl-in 600ms var(--ease-out-soft) backwards;
+  animation-delay: calc(120ms + var(--d, 0) * 60ms);
+}
+.tl-panel__box.is-entering > .tl-panel__points { animation: none; }
+@keyframes tl-in { from { opacity: 0; transform: translateY(8px); } }
+
+/* ---------- Mobile : chaque frise devient une liste verticale ---------- */
+@media (max-width: 48rem) {
+  .tl__axis { display: none; }
+  .tl-track { grid-template-columns: 1fr; padding-block: var(--space-4); }
+  .tl-track__name { padding-top: 0; margin-bottom: var(--space-3); }
+
+  .tl-track__lane {
+    height: auto;
+    margin-left: 0.25rem;
+    padding-left: 1.25rem;
+    border-left: 1px solid var(--color-border);
+  }
+  .tl-track__line,
+  .tl-track__year,
+  .tl-track__now,
+  .tl-track__marks { display: none; }
+
+  .tl-track__items { display: grid; gap: var(--space-1); }
+  .tl-item { position: relative; top: auto !important; left: auto !important; width: auto; }
+  .tl-item::after { display: none; }
+  .tl-item::before {
+    content: "";
+    position: absolute;
+    left: calc(-1.25rem - 4px);
+    top: 1.05rem;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--color-bg);
+    border: 1px solid var(--color-muted);
+    transition: background 300ms ease, border-color 300ms ease;
+  }
+  .tl-item.is-active::before { background: var(--jelly-text); border-color: var(--jelly-text); }
+
+  .tl-item__btn {
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0.5rem 0;
+    white-space: normal;
+    text-align: left;
+  }
+  .tl-item__date { display: block; font-family: var(--font-accent); font-size: 0.75rem; color: var(--color-muted); }
+
+  .tl-panel { grid-column: auto; }
+  .tl-panel__box { margin: 0.25rem 0 0.75rem; padding: var(--space-3); }
+  .tl-panel__box::before { display: none; }
+}
+
+/* ---------- Animations réduites ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tl-panel { transition: none; }
+  .tl-panel__box.is-entering > *,
+  .tl-panel__box.is-entering .tl-panel__points li { animation: none; }
+}

@@ -1,0 +1,53 @@
+/* ==========================================================
+   Transitions entre les pages
+   - L'en-tête reste immobile.
+   - Le contenu de l'ancienne page s'efface en remontant légèrement,
+     celui de la nouvelle apparaît en douceur depuis le bas.
+   - Le fond (ASCII) se fond d'une page à l'autre.
+   Désactivé si l'utilisateur préfère réduire les animations.
+   ========================================================== */
+
+:root {
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-soft: cubic-bezier(0.4, 0, 1, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* --- Navigateurs récents : View Transitions entre documents --- */
+  @view-transition { navigation: auto; }
+
+  .site-header { view-transition-name: site-header; }
+  main { view-transition-name: page; }
+
+  ::view-transition-group(root) { animation-duration: 450ms; animation-timing-function: ease; }
+
+  /* Le bloc "page" ne se déforme pas : il prend directement la place du nouveau */
+  ::view-transition-group(page) { animation: none; }
+  ::view-transition-old(page) {
+    animation: page-out 220ms var(--ease-in-soft) both;
+  }
+  ::view-transition-new(page) {
+    animation: page-in 560ms var(--ease-out-soft) 90ms both;
+  }
+
+  /* --- Secours : classes posées par js/boot.js --- */
+  .no-vt main,
+  .vt-missed main { animation: page-in 560ms var(--ease-out-soft) backwards; }
+  .no-vt.is-leaving main { animation: page-out 200ms var(--ease-in-soft) both; }
+}
+
+@keyframes page-out {
+  to { opacity: 0; transform: translateY(-8px); }
+}
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(14px); }
+}
+
+/* --- Langue (voir js/modules/i18n.js) --- */
+/* En français, la page attend que la traduction soit posée avant de s'afficher */
+.i18n-wait body { visibility: hidden; }
+/* Changement de langue : le contenu s'efface avant le rechargement */
+@media (prefers-reduced-motion: no-preference) {
+  .is-switching main,
+  .is-switching .site-footer { animation: page-out 220ms var(--ease-in-soft) both; }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Zacharie CHAILLOU – Experience" data-fr-content="E-portfolio de Zacharie CHAILLOU – Parcours">
+  <title data-fr="Parcours | Zacharie CHAILLOU">Experience | Zacharie CHAILLOU</title>
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/boot.js"></script>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/pages/parcours.css">
+  <script type="module" src="../assets/js/main.js"></script>
+</head>
+<body data-page="parcours">
+  <a class="skip-link" href="#contenu" data-fr="Aller au contenu">Skip to content</a>
+
+  <!-- Fond animé : grille ASCII seule -->
+  <canvas class="jelly-canvas" data-ascii-bg aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="../index.html">Zacharie CHAILLOU</a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-principale" aria-label="Open menu" data-fr-aria-label="Ouvrir le menu">
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav id="nav-principale" class="site-nav" aria-label="Main navigation" data-fr-aria-label="Navigation principale">
+        <ul class="site-nav__list">
+          <li><a href="../index.html" data-fr="Accueil">Home</a></li>
+          <li><a href="../pages/a-propos.html" data-fr="À propos">About</a></li>
+          <li><a href="../pages/competences.html" data-fr="Compétences">Skills</a></li>
+          <li><a href="../pages/parcours.html" aria-current="page" data-fr="Parcours">Experience</a></li>
+          <li><a href="../pages/projets.html" data-fr="Projets">Projects</a></li>
+          <li><a href="../pages/contact.html">Contact</a></li>
+          <li><a href="../pages/cv.html">CV</a></li>
+        </ul>
+      </nav>
+
+      <button class="lang-toggle" type="button" aria-label="Passer le site en français" data-fr-aria-label="Switch the site to English" title="Français" data-fr-title="English"><span data-l="en">EN</span><span data-l="fr">FR</span></button>
+      <button class="theme-toggle" aria-label="Toggle theme" data-fr-aria-label="Changer de thème" title="Toggle theme" data-fr-title="Changer de thème">◐</button>
+    </div>
+  </header>
+
+  <main id="contenu" class="parcours-page">
+    <div class="section">
+      <div class="container">
+        <header class="page-head parcours-head">
+          <p class="page-head__eyebrow" data-fr="~/parcours">~/experience</p>
+          <h1 data-fr="Parcours">Experience</h1>
+          <p class="parcours-head__lead" data-fr="Mon parcours dans l'informatique et les études.">My path through computer science and my studies.</p>
+        </header>
+
+        <p class="head-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span class="head-status__ref" data-fr="Statut →">Status →</span>
+          <span data-fr="Recherche un <strong>stage de 10 à 12 semaines</strong> à partir du <strong><time datetime=&quot;2027-04-05&quot;>05/04/2027</time></strong>">Looking for a <strong>10 to 12-week internship</strong> starting <strong><time datetime="2027-04-05">April 5, 2027</time></strong></span>
+          <a class="head-status__link" href="contact.html" data-fr="Me contacter">Contact me</a>
+        </p>
+
+        <!-- Trois frises sur un même axe du temps (construites par assets/js/modules/parcours.js) -->
+        <div class="tl" data-parcours></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>&copy; <span data-year></span> Zacharie CHAILLOU</p>
+      <ul class="site-footer__links">
+        <li><a href="https://github.com/ZachChll" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="../pages/cv.html">CV</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

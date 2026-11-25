@@ -1,0 +1,5 @@
+.project { max-width: 56rem; display: grid; gap: var(--space-4); }
+.project__back { justify-self: start; }
+.project__status { color: var(--color-primary); font-weight: 600; font-size: var(--fs-sm); }
+.project__cover { width: 100%; border-radius: var(--radius); }
+.project__links { display: flex; flex-wrap: wrap; gap: var(--space-3); }

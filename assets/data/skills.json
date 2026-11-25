@@ -1,0 +1,120 @@
+[
+  {
+    "id": "dev",
+    "title": { "en": "Development", "fr": "Développement" },
+    "intro": { "en": "Turning an idea into an app that actually runs: from a C# game to a full website.", "fr": "Passer d’une idée à une application qui tourne vraiment : du jeu en C# au site web complet." },
+    "items": [
+      {
+        "name": "HTML / CSS / JavaScript",
+        "text": { "en": "Building web interfaces and client-side interactions. This portfolio is hand-coded, without a framework.", "fr": "Intégration d’interfaces web et interactions côté client. Ce portfolio est codé à la main, sans framework." }
+      },
+      {
+        "name": "C# / WPF",
+        "text": { "en": "A complete, playable game built in a pair (December 2025): game logic, interface and scheduling.", "fr": "Développement d’un jeu complet et jouable en binôme (décembre 2025) : logique de jeu, interface et gestion du planning." }
+      },
+      {
+        "name": "PHP",
+        "text": { "en": "A sales web app for an e-commerce site redesign (fictional Tesla project, October 2026).", "fr": "Application web de vente pour une refonte de site commerçant (projet Tesla fictif, octobre 2026)." }
+      },
+      {
+        "name": "Python",
+        "text": { "en": "Scripts, algorithms and programming exercises during the BUT.", "fr": "Scripts, algorithmique et exercices de programmation pendant le BUT." }
+      }
+    ]
+  },
+  {
+    "id": "data",
+    "title": { "en": "Data", "fr": "Données" },
+    "intro": { "en": "Designing clean databases, querying them and making the numbers readable.", "fr": "Concevoir des bases propres, les interroger et rendre les chiffres lisibles." },
+    "items": [
+      {
+        "name": "SQL",
+        "text": { "en": "Modelling and queries: integrating a database into the bakery management app (May 2026).", "fr": "Modélisation et requêtes : intégration d’une base de données dans l’application de gestion pour boulangerie (mai 2026)." }
+      },
+      {
+        "name": "PostgreSQL",
+        "text": { "en": "DBMS of the information system for the e-commerce site redesign.", "fr": "SGBD du système d’information de la refonte de site commerçant." }
+      },
+      {
+        "name": "Power BI",
+        "text": { "en": "Dashboards and sales data visualisation.", "fr": "Tableaux de bord et visualisation des données de vente." }
+      }
+    ]
+  },
+  {
+    "id": "gestion",
+    "title": { "en": "Project management", "fr": "Gestion de projet" },
+    "intro": { "en": "Organising a team’s work to deliver on time, without leaving anyone behind.", "fr": "Organiser le travail d’une équipe pour livrer à temps, sans perdre personne en route." },
+    "items": [
+      {
+        "name": "Scrum / Azure DevOps",
+        "text": { "en": "Agile management of a 5-person, 15-week project: sprints, backlog, retrospectives.", "fr": "Gestion d’équipe agile sur un projet de 15 semaines à 5 : sprints, backlog, rétrospectives." }
+      },
+      {
+        "name": "Trello / MS Project",
+        "text": { "en": "Task breakdown and scheduling for university projects.", "fr": "Découpage des tâches et planning prévisionnel des projets universitaires." }
+      },
+      {
+        "name": "Odoo",
+        "text": { "en": "Getting to grips with an ERP and its management modules.", "fr": "Prise en main d’un ERP et de ses modules de gestion." }
+      }
+    ]
+  },
+  {
+    "id": "droit",
+    "title": { "en": "Law & security", "fr": "Droit & sécurité" },
+    "intro": { "en": "Building applications that respect users and their data.", "fr": "Construire des applications qui respectent les utilisateurs et leurs données." },
+    "items": [
+      {
+        "name": { "en": "GDPR", "fr": "RGPD" },
+        "text": { "en": "Bringing a sales site into compliance: collected data, consent, retention periods.", "fr": "Mise en conformité d’un site de vente : données collectées, consentement, durée de conservation." }
+      },
+      {
+        "name": { "en": "Compliant APIs", "fr": "API conformes" },
+        "text": { "en": "Integrating external APIs while respecting their terms and the regulations.", "fr": "Intégration d’API externes en respectant leurs conditions et la réglementation." }
+      },
+      {
+        "name": { "en": "Application security", "fr": "Sécurité applicative" },
+        "text": { "en": "Core good practice: input validation, access control, data protection.", "fr": "Bonnes pratiques de base : validation des entrées, gestion des accès, protection des données." }
+      }
+    ]
+  },
+  {
+    "id": "langues",
+    "title": { "en": "Languages", "fr": "Langues" },
+    "intro": { "en": "Working and communicating beyond French.", "fr": "Travailler et échanger au-delà du français." },
+    "items": [
+      {
+        "name": { "en": "English · C1", "fr": "Anglais · C1" },
+        "text": { "en": "Advanced level. EMILE bilingual option in high school (classes taught in English); I read technical documentation daily.", "fr": "Niveau avancé. Option EMILE au lycée (cours en anglais) ; lecture quotidienne de documentation technique." }
+      },
+      {
+        "name": { "en": "Spanish · B1", "fr": "Espagnol · B1" },
+        "text": { "en": "Intermediate level, kept up by talking with Latin American guests at the restaurant.", "fr": "Niveau intermédiaire, entretenu au contact de la clientèle latino au restaurant." }
+      }
+    ]
+  },
+  {
+    "id": "savoir-etre",
+    "title": { "en": "Soft skills", "fr": "Savoir-être" },
+    "intro": { "en": "What working in restaurants taught me, and what I bring to every project.", "fr": "Ce que la restauration m’a appris et que j’emmène dans chaque projet." },
+    "items": [
+      {
+        "name": { "en": "Composure", "fr": "Sang-froid" },
+        "text": { "en": "Up to 300 covers per service in high season: handling the rush and the timing without dropping quality.", "fr": "Jusqu’à 300 couverts par service en saison : gérer le rush et le timing sans perdre en qualité." }
+      },
+      {
+        "name": { "en": "Team spirit", "fr": "Esprit d’équipe" },
+        "text": { "en": "Teamwork on the restaurant floor as in projects, in teams of 2 to 5.", "fr": "Organisation en équipe en salle comme en projet, de 2 à 5 personnes." }
+      },
+      {
+        "name": { "en": "Attention to detail", "fr": "Sens du détail" },
+        "text": { "en": "Careful product presentation and attentive service in a bistronomy restaurant.", "fr": "Présentation précise des produits et service attentionné en restaurant bistronomique." }
+      },
+      {
+        "name": { "en": "Creativity", "fr": "Créativité" },
+        "text": { "en": "Sewing and fashion feed my taste for polished interfaces.", "fr": "La couture et la mode nourrissent mon goût pour les interfaces soignées." }
+      }
+    ]
+  }
+]

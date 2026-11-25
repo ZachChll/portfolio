@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Zacharie CHAILLOU – Contact" data-fr-content="E-portfolio de Zacharie CHAILLOU – Contact">
+  <title data-fr="Contact | Zacharie CHAILLOU">Contact | Zacharie CHAILLOU</title>
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/boot.js"></script>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/pages/contact.css">
+  <script type="module" src="../assets/js/main.js"></script>
+</head>
+<body data-page="contact">
+  <a class="skip-link" href="#contenu" data-fr="Aller au contenu">Skip to content</a>
+
+  <!-- Fond animé : grille ASCII + montagnes et volée d'oiseaux (assets/js/modules/birds.js) -->
+  <canvas class="jelly-canvas" data-ascii-bg="birds" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="../index.html">Zacharie CHAILLOU</a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-principale" aria-label="Open menu" data-fr-aria-label="Ouvrir le menu">
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav id="nav-principale" class="site-nav" aria-label="Main navigation" data-fr-aria-label="Navigation principale">
+        <ul class="site-nav__list">
+          <li><a href="../index.html" data-fr="Accueil">Home</a></li>
+          <li><a href="../pages/a-propos.html" data-fr="À propos">About</a></li>
+          <li><a href="../pages/competences.html" data-fr="Compétences">Skills</a></li>
+          <li><a href="../pages/parcours.html" data-fr="Parcours">Experience</a></li>
+          <li><a href="../pages/projets.html" data-fr="Projets">Projects</a></li>
+          <li><a href="../pages/contact.html" aria-current="page">Contact</a></li>
+          <li><a href="../pages/cv.html">CV</a></li>
+        </ul>
+      </nav>
+
+      <button class="lang-toggle" type="button" aria-label="Passer le site en français" data-fr-aria-label="Switch the site to English" title="Français" data-fr-title="English"><span data-l="en">EN</span><span data-l="fr">FR</span></button>
+      <button class="theme-toggle" aria-label="Toggle theme" data-fr-aria-label="Changer de thème" title="Toggle theme" data-fr-title="Changer de thème">◐</button>
+    </div>
+  </header>
+
+  <main id="contenu" class="contact">
+
+    <div class="section">
+      <div class="container">
+        <header class="page-head">
+          <p class="page-head__eyebrow">~/contact</p>
+          <h1>Contact</h1>
+          <p class="contact__lead" data-fr="Une offre de stage, un projet, une question ? Écrivez-moi.">An internship offer, a project, a question? Write to me.</p>
+        </header>
+
+        <div class="two-columns">
+          <section class="panel contact__info" aria-labelledby="joindre">
+            <h2 id="joindre" data-fr="Me joindre">Reach me</h2>
+            <p class="contact__status">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span data-fr="Disponible pour un <strong>stage de 10 à 12 semaines</strong> dès le <strong><time datetime=&quot;2027-04-05&quot;>05/04/2027</time></strong>">Available for a <strong>10 to 12-week internship</strong> from <strong><time datetime="2027-04-05">April 5, 2027</time></strong></span>
+            </p>
+            <ul class="rows">
+              <li>
+                <strong>E-mail</strong>
+                <span class="contact__mail">
+                  <a href="mailto:zachaillou@gmail.com" data-copy-source>zachaillou@gmail.com</a>
+                  <button class="copy-btn" type="button" data-copy="zachaillou@gmail.com" aria-label="Copy e-mail address" data-fr-aria-label="Copier l’adresse e-mail" data-fr="copier">copy</button>
+                </span>
+              </li>
+              <li><strong>GitHub</strong><span><a href="https://github.com/ZachChll" target="_blank" rel="noopener">github.com/ZachChll</a></span></li>
+              <li><strong>LinkedIn</strong><span><a href="https://www.linkedin.com/" target="_blank" rel="noopener">Zacharie Chaillou</a></span></li>
+              <li><strong data-fr="Basé à">Based in</strong><span data-fr="Annecy (74), Haute-Savoie">Annecy, Haute-Savoie, France</span></li>
+              <li><strong>CV</strong><span><a href="cv.html" data-fr="Voir mon CV">See my CV</a></span></li>
+            </ul>
+          </section>
+
+          <section class="panel term" aria-labelledby="ecrire">
+            <h2 id="ecrire" class="term__cmd"><span class="term__prompt" aria-hidden="true">$</span> message --to zacharie</h2>
+
+            <form class="term__form" data-contact-form action="https://formspree.io/f/xwlownnq" method="POST" novalidate>
+              <div class="term__field">
+                <label for="nom" data-fr="nom &lt;span aria-hidden=&quot;true&quot;&gt;&amp;gt;&lt;/span&gt;">name <span aria-hidden="true">&gt;</span></label>
+                <input id="nom" name="nom" type="text" required autocomplete="name" maxlength="100">
+              </div>
+              <div class="term__field">
+                <label for="email">e-mail <span aria-hidden="true">&gt;</span></label>
+                <input id="email" name="email" type="email" required autocomplete="email" maxlength="200">
+              </div>
+              <fieldset class="term__field term__field--choice">
+                <legend data-fr="objet &lt;span aria-hidden=&quot;true&quot;&gt;&amp;gt;&lt;/span&gt;">subject <span aria-hidden="true">&gt;</span></legend>
+                <div class="chips">
+                  <label class="chip"><input type="radio" name="objet" value="Stage" checked><span data-fr="stage">internship</span></label>
+                  <label class="chip"><input type="radio" name="objet" value="Projet"><span data-fr="projet">project</span></label>
+                  <label class="chip"><input type="radio" name="objet" value="Autre"><span data-fr="autre">other</span></label>
+                </div>
+              </fieldset>
+              <div class="term__field term__field--message">
+                <label for="message">message <span aria-hidden="true">&gt;</span></label>
+                <textarea id="message" name="message" rows="5" required maxlength="3000"></textarea>
+                <span class="term__count" data-count aria-hidden="true">0 / 3000</span>
+              </div>
+              <!-- piège à robots : invisible pour les humains -->
+              <input class="term__trap" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+              <div class="term__actions">
+                <button class="term__send" type="submit"><span data-send-label data-fr="[ envoyer ↵ ]">[ send ↵ ]</span></button>
+                <span class="term__hint" aria-hidden="true">ctrl + ↵</span>
+              </div>
+              <p class="term__status" role="status" aria-live="polite"></p>
+            </form>
+
+            <div class="term__done" data-contact-done hidden>
+              <p data-fr="&lt;span class=&quot;term__ok&quot;&gt;✓&lt;/span&gt; message envoyé"><span class="term__ok">✓</span> message sent</p>
+              <p class="term__muted" data-fr="Merci ! Je vous réponds dès que possible.">Thank you! I’ll get back to you as soon as possible.</p>
+              <button class="term__again" type="button" data-contact-again data-fr="[ écrire un autre message ]">[ write another message ]</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>&copy; <span data-year></span> Zacharie CHAILLOU</p>
+      <ul class="site-footer__links">
+        <li><a href="https://github.com/ZachChll" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="../pages/cv.html">CV</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

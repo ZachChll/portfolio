@@ -1,0 +1,140 @@
+[
+  {
+    "id": "tesla-ecommerce",
+    "island": "tesla",
+    "label": { "en": "E-commerce redesign", "fr": "Refonte e-commerce" },
+    "title": { "en": "E-commerce website redesign for Tesla", "fr": "Refonte d’un site e-commerce pour Tesla" },
+    "summary": { "en": "A sales web app and the redesign of its information system, for a fictional client: Tesla.", "fr": "Application web de vente et refonte de son système d’information, pour un client fictif : Tesla." },
+    "status": { "en": "In progress", "fr": "En cours" },
+    "date": { "en": "Oct. 2026 – Jan. 2027", "fr": "Oct. 2026 – Janv. 2027" },
+    "tags": [
+      "Web",
+      { "en": "Data", "fr": "Données" },
+      { "en": "Project management", "fr": "Gestion de projet" }
+    ],
+    "featured": true,
+    "image": "assets/img/projets/placeholder.svg",
+    "type": { "en": "University project (SAÉ)", "fr": "Projet universitaire (SAÉ)" },
+    "team": { "en": "Team of 5 · 15 weeks", "fr": "Équipe de 5 · 15 semaines" },
+    "context": "",
+    "goal": "",
+    "tasks": [
+      { "en": "Web development in PHP, PostgreSQL database", "fr": "Développement web en PHP, base PostgreSQL" },
+      { "en": "Power BI dashboards", "fr": "Tableaux de bord Power BI" },
+      { "en": "Agile team management: Scrum on Azure DevOps", "fr": "Gestion d’équipe agile : Scrum sur Azure DevOps" },
+      { "en": "GDPR, compliant APIs and application security", "fr": "RGPD, API conformes et sécurité de l’application" }
+    ],
+    "technologies": [
+      "PHP",
+      "PostgreSQL",
+      "Power BI",
+      "Azure DevOps"
+    ],
+    "learned": "",
+    "links": {
+      "demo": "",
+      "code": ""
+    }
+  },
+  {
+    "id": "boulangerie",
+    "island": "bakery",
+    "label": { "en": "Bakery", "fr": "Boulangerie" },
+    "title": { "en": "Management app for a bakery", "fr": "Application de gestion pour une boulangerie" },
+    "summary": { "en": "Redesign of an order management app, from the database to the interface.", "fr": "Refonte d’une application de gestion des commandes, de la base de données à l’interface." },
+    "status": { "en": "Completed", "fr": "Terminé" },
+    "date": { "en": "May 2026", "fr": "Mai 2026" },
+    "tags": [
+      "Application",
+      { "en": "Data", "fr": "Données" },
+      "UI/UX"
+    ],
+    "featured": true,
+    "image": "assets/img/projets/placeholder.svg",
+    "type": { "en": "University project", "fr": "Projet universitaire" },
+    "team": { "en": "Team of 4 · 3 weeks", "fr": "Équipe de 4 · 3 semaines" },
+    "context": "",
+    "goal": "",
+    "tasks": [
+      { "en": "Redesign of the order management app", "fr": "Refonte de l’application de gestion des commandes" },
+      { "en": "Database integration", "fr": "Intégration d’une base de données" },
+      { "en": "Interfaces and features (UI/UX)", "fr": "Interfaces et fonctionnalités (UI/UX)" }
+    ],
+    "technologies": [
+      "C#",
+      "SQL"
+    ],
+    "learned": "",
+    "links": {
+      "demo": "",
+      "code": ""
+    }
+  },
+  {
+    "id": "jeu-foudre",
+    "island": "storm",
+    "label": { "en": "“Lightning” game", "fr": "Jeu « foudre »" },
+    "title": { "en": "Lightning-themed video game in C# / WPF", "fr": "Jeu vidéo en C# / WPF sur le thème de la foudre" },
+    "summary": { "en": "A complete, playable game, built in a pair in two weeks.", "fr": "Un jeu complet et jouable, développé en binôme en deux semaines." },
+    "status": { "en": "Completed", "fr": "Terminé" },
+    "date": { "en": "Dec. 2025", "fr": "Déc. 2025" },
+    "tags": [
+      { "en": "Game", "fr": "Jeu" },
+      "Application"
+    ],
+    "featured": true,
+    "image": "assets/img/projets/placeholder.svg",
+    "type": { "en": "University project", "fr": "Projet universitaire" },
+    "team": { "en": "Team of 2 · 2 weeks", "fr": "Équipe de 2 · 2 semaines" },
+    "context": "",
+    "goal": "",
+    "tasks": [
+      { "en": "Game programmed in C#, interface in WPF", "fr": "Programmation du jeu en C#, interface en WPF" },
+      { "en": "Project management and scheduling", "fr": "Gestion de projet et planning prévisionnel" }
+    ],
+    "technologies": [
+      "C#",
+      "WPF"
+    ],
+    "learned": "",
+    "links": {
+      "demo": "",
+      "code": "https://github.com/chemseddine-etr/SAE101Foudre"
+    }
+  },
+  {
+    "id": "e-portfolio",
+    "island": "portfolio",
+    "label": "E-portfolio",
+    "title": { "en": "E-portfolio website", "fr": "Site web e-portfolio" },
+    "summary": { "en": "This very site: a portfolio in HTML, CSS and JavaScript, with animated ASCII and voxel backgrounds.", "fr": "Ce site : un portfolio en HTML, CSS et JavaScript, avec des fonds animés en ASCII et en voxels." },
+    "status": { "en": "In progress", "fr": "En cours" },
+    "date": "Nov. 2026",
+    "tags": [
+      "Web",
+      "Design"
+    ],
+    "featured": false,
+    "image": "assets/img/projets/placeholder.svg",
+    "type": { "en": "Personal project", "fr": "Projet personnel" },
+    "team": { "en": "Solo", "fr": "Seul" },
+    "context": "",
+    "goal": "",
+    "tasks": [
+      { "en": "Concept and design of every page", "fr": "Conception et design de chaque page" },
+      { "en": "Canvas and WebGL animations", "fr": "Animations en canvas et en WebGL" },
+      { "en": "Static site, no framework", "fr": "Site statique, sans framework" }
+    ],
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Three.js"
+    ],
+    "learned": "",
+    "links": {
+      "demo": "",
+      "code": "https://github.com/ZachChll"
+    }
+  }
+]

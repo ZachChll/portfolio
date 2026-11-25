@@ -1,0 +1,136 @@
+{
+  "axis": {
+    "start": "2025-01",
+    "end": "2027-07"
+  },
+  "tracks": [
+    {
+      "id": "scolaire",
+      "title": { "en": "Education", "fr": "Parcours scolaire" },
+      "entries": [
+        {
+          "title": { "en": "French baccalauréat · with honours", "fr": "Bac général · mention Bien" },
+          "start": "2025-07",
+          "date": "2025",
+          "place": { "en": "Lycée Berthollet, Annecy, France", "fr": "Lycée Berthollet, Annecy (74)" },
+          "points": [
+            { "en": "Majors in mathematics, physics-chemistry and computer science", "fr": "Spécialités mathématiques, physique-chimie et informatique" },
+            { "en": "EMILE option: some classes taught in English", "fr": "Option EMILE : une partie des cours en anglais" },
+            { "en": "Awarded with honours", "fr": "Obtenu avec la mention Bien" }
+          ]
+        },
+        {
+          "title": { "en": "BUT in Computer Science · 1st year", "fr": "BUT Informatique · 1re année" },
+          "start": "2025-09",
+          "end": "2026-06",
+          "date": "2025 – 2026",
+          "place": "IUT d’Annecy · Université Savoie Mont Blanc",
+          "points": [
+            { "en": "Fundamentals of development, databases and systems", "fr": "Bases du développement, des bases de données et des systèmes" },
+            { "en": "First team projects, including a C# / WPF game and a management app", "fr": "Premiers projets en équipe, dont un jeu en C# / WPF et une application de gestion" }
+          ]
+        },
+        {
+          "title": { "en": "BUT in Computer Science · 2nd year", "fr": "BUT Informatique · 2e année" },
+          "start": "2026-09",
+          "end": "2027-06",
+          "date": { "en": "2026 – 2027 · in progress", "fr": "2026 – 2027 · en cours" },
+          "place": "IUT d’Annecy · Université Savoie Mont Blanc",
+          "points": [
+            { "en": "Track A: application development (design, development, validation)", "fr": "Parcours A : réalisation d’applications (conception, développement, validation)" },
+            { "en": "Long team projects, using agile methods", "fr": "Projets longs en équipe, en méthode agile" },
+            { "en": "10 to 12-week internship starting April 5, 2027", "fr": "Stage de 10 à 12 semaines à partir du 5 avril 2027" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "projets",
+      "title": { "en": "Student projects", "fr": "Expériences étudiantes" },
+      "entries": [
+        {
+          "title": { "en": "Video game in C# / WPF", "fr": "Jeu vidéo en C# / WPF" },
+          "start": "2025-12",
+          "date": { "en": "December 2025 · 2 weeks", "fr": "Décembre 2025 · 2 semaines" },
+          "place": { "en": "University project · team of 2", "fr": "Projet universitaire · équipe de 2" },
+          "points": [
+            { "en": "Development of a complete, playable game", "fr": "Développement d’un jeu complet et jouable" },
+            { "en": "Programming in C# and interface in WPF", "fr": "Programmation en C# et interface en WPF" },
+            { "en": "Project management and scheduling", "fr": "Gestion de projet et planning prévisionnel" }
+          ],
+          "tags": [
+            "C#",
+            "WPF",
+            { "en": "Project management", "fr": "Gestion de projet" }
+          ]
+        },
+        {
+          "title": { "en": "Management app for a bakery", "fr": "Application de gestion pour une boulangerie" },
+          "start": "2026-05",
+          "date": { "en": "May 2026 · 3 weeks", "fr": "Mai 2026 · 3 semaines" },
+          "place": { "en": "University project · team of 4", "fr": "Projet universitaire · équipe de 4" },
+          "points": [
+            { "en": "Redesign of an order management app", "fr": "Refonte d’une application de gestion des commandes" },
+            { "en": "Database integration", "fr": "Intégration d’une base de données" },
+            { "en": "Development of the interfaces and features (UI/UX)", "fr": "Développement des interfaces et des fonctionnalités (UI/UX)" }
+          ],
+          "tags": [
+            "SQL",
+            "UI/UX"
+          ]
+        },
+        {
+          "title": { "en": "E-commerce site and information system redesign", "fr": "Refonte d’un site e-commerce et de son SI" },
+          "start": "2026-10",
+          "end": "2027-01",
+          "date": { "en": "October 2026 · 15 weeks", "fr": "Octobre 2026 · 15 semaines" },
+          "place": { "en": "University project · team of 5", "fr": "Projet universitaire · équipe de 5" },
+          "points": [
+            { "en": "Sales web app for Tesla (fictional client)", "fr": "Application web de vente pour Tesla (client fictif)" },
+            { "en": "Web development in PHP, PostgreSQL database and Power BI dashboards", "fr": "Développement web en PHP, base PostgreSQL et tableaux de bord Power BI" },
+            { "en": "Agile team management: Scrum on Azure DevOps", "fr": "Gestion d’équipe agile : Scrum sur Azure DevOps" },
+            { "en": "Digital law: GDPR, compliant APIs, application security", "fr": "Droit du numérique : RGPD, API conformes, sécurité de l’application" }
+          ],
+          "tags": [
+            "PHP",
+            "PostgreSQL",
+            "Power BI",
+            "Scrum",
+            "Azure DevOps"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jobs",
+      "title": { "en": "Student jobs", "fr": "Jobs étudiants" },
+      "entries": [
+        {
+          "title": { "en": "Waiter · Chez Monique", "fr": "Serveur · Chez Monique" },
+          "start": "2025-04",
+          "end": "2026-06",
+          "date": { "en": "April 2025 – June 2026 · 15 months", "fr": "Avril 2025 – juin 2026 · 15 mois" },
+          "place": { "en": "Waiter / head waiter · Chez Monique, Annecy, France", "fr": "Serveur / chef de rang · Chez Monique, Annecy (74)" },
+          "points": [
+            { "en": "Service, taking orders, bar, opening and closing", "fr": "Service, prise de commandes, bar, ouverture et fermeture" },
+            { "en": "Around 300 covers per service in high season", "fr": "Environ 300 couverts par service en saison" },
+            { "en": "Managing timing and working under pressure", "fr": "Gestion du timing et travail sous pression" },
+            { "en": "Teamwork", "fr": "Organisation en équipe" }
+          ]
+        },
+        {
+          "title": { "en": "Head waiter · Alegria", "fr": "Chef de rang · Alegria" },
+          "start": "2026-10",
+          "ongoing": true,
+          "date": { "en": "Since October 2026", "fr": "Depuis octobre 2026" },
+          "place": { "en": "Waiter / head waiter · Alegria (Peruvian bistronomy), Annecy, France", "fr": "Serveur / chef de rang · Alegria (bistronomique péruvien), Annecy (74)" },
+          "points": [
+            { "en": "Attentive service, around 40 covers per service", "fr": "Service attentionné, environ 40 couverts par service" },
+            { "en": "Careful presentation of quality products", "fr": "Présentation précise de produits de qualité" },
+            { "en": "Discovering Latin American and European cultures", "fr": "Découverte des cultures latino-américaines et européennes" }
+          ]
+        }
+      ]
+    }
+  ]
+}

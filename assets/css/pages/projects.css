@@ -1,0 +1,214 @@
+/* ==========================================================
+   Projets : archipel d'îles flottantes en voxels (une île par projet)
+   ========================================================== */
+
+.projects-page .page-head__eyebrow {
+  color: var(--jelly-text);
+  font-family: var(--font-accent); font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.projects-page .page-head h1 {
+  font-family: var(--font-accent); font-weight: 700;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.projects__lead {
+  margin-top: var(--space-2);
+  color: var(--color-muted);
+  font-size: var(--fs-lg);
+  max-width: 40rem;
+}
+.projects-page .page-head { margin-bottom: var(--space-3); }
+
+/* --- scène --- */
+.archi { position: relative; }
+.projects-page { overflow-x: clip; }
+.archi__stage {
+  position: relative;
+  height: clamp(26rem, calc(100svh - var(--header-h) - 12rem), 46rem);
+  margin-inline: calc(var(--space-4) * -1);
+  touch-action: pan-y;
+}
+.archi__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+.archi[data-mode="3d"] .archi__canvas { opacity: 1; }
+
+/* --- noms des îles (placés par le JS au-dessus de chaque île) --- */
+.archi__labels { position: absolute; inset: 0; pointer-events: none; }
+.archi__label {
+  position: absolute;
+  left: 0; top: 0;
+  translate: -50% calc(-100% - 0.4rem);
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem 1rem;
+  font-family: var(--font-accent); font-weight: 700;
+  color: var(--color-text);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+.archi[data-mode="3d"] .archi__label { opacity: 1; }
+.archi__label-name {
+  position: relative;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-shadow: 0 0 6px var(--color-bg), 0 0 2px var(--color-bg);
+}
+/* trait fin qui se dessine sous le nom au survol */
+.archi__label-name::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 1px;
+  background: var(--jelly-text);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 320ms cubic-bezier(.2, .7, .2, 1);
+}
+.archi__label-meta {
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  text-shadow: 0 0 6px var(--color-bg);
+}
+/* petite tige qui relie le nom à l'île */
+.archi__label::after {
+  content: "";
+  position: absolute;
+  left: 50%; bottom: 0;
+  width: 1px; height: 0.7rem;
+  background: linear-gradient(var(--color-muted), transparent);
+  opacity: 0.6;
+}
+.archi__label:hover .archi__label-name::after,
+.archi__label:focus-visible .archi__label-name::after,
+.archi__label.is-hover .archi__label-name::after { transform: scaleX(1); }
+.archi__label:focus-visible { outline: 2px solid var(--jelly-text); outline-offset: 2px; border-radius: 4px; }
+
+.archi[data-state="focus"] .archi__label { opacity: 0; pointer-events: none; }
+
+.archi__hint {
+  position: absolute;
+  left: 50%; bottom: var(--space-3);
+  translate: -50% 0;
+  font-family: var(--font-accent); font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.archi__hint::before { content: "↳ "; color: var(--jelly-text); }
+.archi[data-state="focus"] .archi__hint { left: 30%; }
+
+/* --- détail du projet --- */
+.archi__detail {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: min(26rem, 40%);
+  translate: 0 -50%;
+  padding: var(--space-4);
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  z-index: 2;
+  animation: archi-in 520ms cubic-bezier(.2, .7, .2, 1) 120ms backwards;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+.archi__detail.is-out { opacity: 0; transform: translateX(12px); }
+@keyframes archi-in { from { opacity: 0; transform: translateX(24px); } }
+.archi__detail > * { animation: archi-line 480ms cubic-bezier(.2, .7, .2, 1) backwards; }
+.archi__detail > :nth-child(2) { animation-delay: 160ms; }
+.archi__detail > :nth-child(3) { animation-delay: 210ms; }
+.archi__detail > :nth-child(4) { animation-delay: 260ms; }
+.archi__detail > :nth-child(5) { animation-delay: 310ms; }
+.archi__detail > :nth-child(n + 6) { animation-delay: 360ms; }
+@keyframes archi-line { from { opacity: 0; transform: translateY(6px); } }
+
+.archi__back {
+  font-family: var(--font-accent); font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--jelly-text);
+  background: none;
+  border: 0;
+  padding: 0;
+  margin-bottom: var(--space-3);
+  cursor: pointer;
+}
+.archi__back:hover { text-decoration: underline; text-underline-offset: 3px; }
+.archi__eyebrow { font-family: var(--font-accent); font-weight: 700; font-size: 0.75rem; color: var(--color-muted); }
+.archi__title {
+  font-family: var(--font-accent); font-weight: 700;
+  font-size: var(--fs-lg);
+  line-height: 1.3;
+  margin: var(--space-1) 0 var(--space-3);
+}
+.archi__summary { color: var(--color-muted); line-height: 1.6; }
+.archi__points { display: grid; gap: var(--space-2); margin-top: var(--space-3); font-size: var(--fs-sm); line-height: 1.5; }
+.archi__points li { position: relative; padding-left: 1.25rem; }
+.archi__points li::before { content: "—"; position: absolute; left: 0; color: var(--jelly-text); }
+.archi__tags { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-top: var(--space-3); }
+.archi__tag {
+  font-family: var(--font-accent); font-weight: 700;
+  font-size: 0.72rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-muted);
+}
+.archi__meta { margin-top: var(--space-3); font-size: 0.78rem; color: var(--color-muted); }
+.archi__more {
+  display: inline-block;
+  margin-top: var(--space-3);
+  font-family: var(--font-accent); font-weight: 700;
+  font-size: var(--fs-sm);
+  color: var(--jelly-text);
+  text-decoration: none;
+}
+.archi__more span { display: inline-block; transition: transform var(--transition); }
+.archi__more:hover span { transform: translateX(4px); }
+.archi__more--code { margin-left: var(--space-4); }
+
+/* --- écrans étroits : le détail passe sous l'île --- */
+@media (max-width: 54rem), (max-aspect-ratio: 23/20) {
+  .archi__stage { height: clamp(24rem, 62svh, 36rem); margin-inline: calc(var(--space-3) * -1); }
+  .archi__detail {
+    position: relative;
+    top: auto; right: auto;
+    width: auto;
+    translate: none;
+    margin-top: var(--space-3);
+  }
+  .archi[data-state="focus"] .archi__hint { left: 50%; }
+}
+
+/* --- sans WebGL : simple liste --- */
+.archi[data-mode="flat"] .archi__stage { height: auto; margin: 0; }
+.archi[data-mode="flat"] .archi__canvas,
+.archi[data-mode="flat"] .archi__hint { display: none; }
+.archi[data-mode="flat"] .archi__labels { position: static; display: grid; gap: var(--space-2); pointer-events: auto; }
+.archi[data-mode="flat"] .archi__label {
+  position: static; translate: none; transform: none !important; opacity: 1;
+  justify-items: start; padding: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius);
+}
+.archi[data-mode="flat"] .archi__label::after { display: none; }
+.archi[data-mode="flat"] .archi__detail { position: relative; top: auto; right: auto; width: auto; translate: none; margin-top: var(--space-3); }
+
+@media (prefers-reduced-motion: reduce) {
+  .archi__detail, .archi__detail > * { animation: none; }
+}
